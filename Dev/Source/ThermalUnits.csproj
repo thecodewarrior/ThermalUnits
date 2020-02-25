@@ -1,0 +1,565 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{D7D21B4A-1DA7-41D8-B202-C58CA8FA62AA}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>ThermalUnits</RootNamespace>
+        <AssemblyName>ThermalUnits</AssemblyName>
+        <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>false</DebugSymbols>
+        <DebugType>none</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>..\Assemblies\</OutputPath>
+        <DefineConstants>DEBUG</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>none</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>..\..\Release\Assemblies\</OutputPath>
+        <DefineConstants></DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+    <ItemGroup>
+        <!-- RimWorld references -->
+        
+        <Reference Include="Assembly-CSharp">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/Assembly-CSharp.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/Assembly-CSharp.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="ISharpZipLib">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\ISharpZipLib.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\ISharpZipLib.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/ISharpZipLib.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/ISharpZipLib.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="Unity.TextMeshPro">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/Unity.TextMeshPro.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/Unity.TextMeshPro.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.AIModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.AIModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.AIModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.AIModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.AIModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.ARModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.ARModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.ARModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.ARModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.ARModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.AccessibilityModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.AccessibilityModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.AccessibilityModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.AccessibilityModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.AccessibilityModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.AndroidJNIModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.AndroidJNIModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.AndroidJNIModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.AndroidJNIModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.AndroidJNIModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.AnimationModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.AnimationModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.AnimationModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.AssetBundleModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.AssetBundleModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.AssetBundleModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.AudioModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.AudioModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.AudioModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.ClothModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.ClothModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.ClothModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.ClothModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.ClothModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.ClusterInputModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.ClusterInputModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.ClusterInputModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.ClusterRendererModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.ClusterRendererModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.ClusterRendererModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.ClusterRendererModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.ClusterRendererModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.CrashReportingModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CrashReportingModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.CrashReportingModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.CrashReportingModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.CrashReportingModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.DSPGraphModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.DSPGraphModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.DSPGraphModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.DSPGraphModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.DSPGraphModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.DirectorModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.DirectorModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.DirectorModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.FileSystemHttpModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.FileSystemHttpModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.FileSystemHttpModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.FileSystemHttpModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.FileSystemHttpModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.GameCenterModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.GameCenterModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.GameCenterModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.GridModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.GridModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.GridModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.GridModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.GridModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.HotReloadModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.HotReloadModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.HotReloadModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.HotReloadModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.HotReloadModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.IMGUIModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.IMGUIModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.IMGUIModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.ImageConversionModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.ImageConversionModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.ImageConversionModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.InputLegacyModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.InputLegacyModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.InputLegacyModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.InputModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.InputModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.InputModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.JSONSerializeModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.JSONSerializeModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.JSONSerializeModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.LocalizationModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.LocalizationModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.LocalizationModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.LocalizationModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.LocalizationModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.ParticleSystemModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.ParticleSystemModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.ParticleSystemModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.PerformanceReportingModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.PerformanceReportingModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.PerformanceReportingModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.Physics2DModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.Physics2DModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.Physics2DModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.PhysicsModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.PhysicsModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.PhysicsModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.ProfilerModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.ProfilerModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.ProfilerModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.ProfilerModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.ProfilerModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.ScreenCaptureModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.ScreenCaptureModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.ScreenCaptureModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.SharedInternalsModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.SharedInternalsModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.SharedInternalsModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.SpriteMaskModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.SpriteMaskModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.SpriteMaskModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.SpriteMaskModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.SpriteMaskModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.SpriteShapeModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.SpriteShapeModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.SpriteShapeModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.SpriteShapeModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.SpriteShapeModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.StreamingModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.StreamingModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.StreamingModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.StreamingModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.StreamingModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.SubstanceModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.SubstanceModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.SubstanceModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.SubstanceModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.SubstanceModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.TLSModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.TLSModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.TLSModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.TLSModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.TLSModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.TerrainModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.TerrainModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.TerrainModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.TerrainModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.TerrainModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.TerrainPhysicsModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.TerrainPhysicsModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.TerrainPhysicsModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.TextCoreModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.TextCoreModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.TextCoreModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.TextCoreModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.TextCoreModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.TextRenderingModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.TextRenderingModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.TextRenderingModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.TilemapModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.TilemapModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.TilemapModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.TilemapModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.TilemapModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.UI">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UI.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.UI.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.UI.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.UI.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.UIElementsModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.UIElementsModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.UIElementsModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.UIModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.UIModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.UIModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.UNETModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UNETModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.UNETModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.UNETModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.UNETModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.UmbraModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UmbraModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.UmbraModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.UmbraModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.UmbraModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.UnityAnalyticsModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.UnityAnalyticsModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.UnityAnalyticsModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.UnityConnectModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UnityConnectModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.UnityConnectModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.UnityConnectModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.UnityConnectModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.UnityTestProtocolModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.UnityTestProtocolModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.UnityTestProtocolModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.UnityWebRequestModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.UnityWebRequestModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.UnityWebRequestModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.VFXModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.VFXModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.VFXModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.VFXModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.VFXModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.VRModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.VRModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.VRModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.VRModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.VRModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.VehiclesModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.VehiclesModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.VehiclesModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.VehiclesModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.VehiclesModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.VideoModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.VideoModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.VideoModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.WindModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.WindModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.WindModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.WindModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.WindModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine.XRModule">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.XRModule.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.XRModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.XRModule.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.XRModule.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <Reference Include="UnityEngine">
+            <HintPath Condition="Exists('..\..\..\RimWorldWin64_Data')">..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
+            <HintPath Condition="Exists('..\..\..\RimWorldWin_Data')">..\..\..\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
+            <HintPath Condition="Exists('../../../RimWorldLinux_Data')">../../../RimWorldLinux_Data/Managed/UnityEngine.dll</HintPath>
+            <HintPath Condition="Exists('../../../../Contents/Resources/Data')">../../../../Contents/Resources/Data/Managed/UnityEngine.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        
+        <!-- end RimWorld references -->
+        <Reference Include="0Harmony">
+            <HintPath>..\ThirdParty\0Harmony.dll</HintPath>
+            <Private>True</Private>
+        </Reference>
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System.Data.DataSetExtensions" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="**\*.cs" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
