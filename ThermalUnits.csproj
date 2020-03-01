@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <PropertyGroup>
+        <Configuration>Release</Configuration>
+        <Platform>AnyCPU</Platform>
+        <ProjectGuid>{D7D21B4A-1DA7-41D8-B202-C58CA8FA62AA}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>ThermalUnits</RootNamespace>
+        <AssemblyName>ThermalUnits</AssemblyName>
+        <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <Optimize>true</Optimize>
+        <OutputPath>ThermalUnits\Assemblies\</OutputPath>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+    <ItemGroup>
+        <ReleaseFiles Include="ThermalUnits\**" Exclude="ThermalUnits\Assemblies\**"/>
+
+        <!-- RimWorld references -->
+        <Reference Include="Assembly-CSharp">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/Assembly-CSharp.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/Assembly-CSharp.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/Assembly-CSharp.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="ISharpZipLib">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/ISharpZipLib.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\ISharpZipLib.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/ISharpZipLib.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/ISharpZipLib.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="Unity.TextMeshPro">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/Unity.TextMeshPro.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Unity.TextMeshPro.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/Unity.TextMeshPro.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/Unity.TextMeshPro.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.AIModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.AIModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.AIModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.AIModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.AIModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.ARModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.ARModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.ARModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.ARModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.ARModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.AccessibilityModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.AccessibilityModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.AccessibilityModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.AccessibilityModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.AccessibilityModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.AndroidJNIModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.AndroidJNIModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.AndroidJNIModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.AndroidJNIModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.AndroidJNIModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.AnimationModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.AnimationModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.AnimationModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.AnimationModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.AnimationModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.AssetBundleModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.AssetBundleModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.AssetBundleModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.AssetBundleModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.AudioModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.AudioModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.AudioModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.AudioModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.AudioModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.ClothModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.ClothModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.ClothModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.ClothModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.ClothModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.ClusterInputModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.ClusterInputModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.ClusterInputModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.ClusterInputModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.ClusterRendererModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.ClusterRendererModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.ClusterRendererModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.ClusterRendererModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.ClusterRendererModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.CoreModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.CoreModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.CoreModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.CrashReportingModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.CrashReportingModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.CrashReportingModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.CrashReportingModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.CrashReportingModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.DSPGraphModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.DSPGraphModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.DSPGraphModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.DSPGraphModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.DSPGraphModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.DirectorModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.DirectorModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.DirectorModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.DirectorModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.DirectorModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.FileSystemHttpModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.FileSystemHttpModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.FileSystemHttpModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.FileSystemHttpModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.FileSystemHttpModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.GameCenterModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.GameCenterModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.GameCenterModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.GameCenterModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.GridModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.GridModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.GridModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.GridModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.GridModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.HotReloadModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.HotReloadModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.HotReloadModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.HotReloadModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.HotReloadModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.IMGUIModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.IMGUIModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.IMGUIModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.IMGUIModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.ImageConversionModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.ImageConversionModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.ImageConversionModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.ImageConversionModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.InputLegacyModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.InputLegacyModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.InputLegacyModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.InputLegacyModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.InputModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.InputModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.InputModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.InputModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.InputModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.JSONSerializeModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.JSONSerializeModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.JSONSerializeModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.JSONSerializeModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.LocalizationModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.LocalizationModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.LocalizationModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.LocalizationModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.LocalizationModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.ParticleSystemModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.ParticleSystemModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.ParticleSystemModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.ParticleSystemModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.PerformanceReportingModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.PerformanceReportingModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.PerformanceReportingModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.PerformanceReportingModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.Physics2DModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.Physics2DModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.Physics2DModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.Physics2DModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.PhysicsModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.PhysicsModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.PhysicsModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.PhysicsModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.ProfilerModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.ProfilerModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.ProfilerModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.ProfilerModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.ProfilerModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.ScreenCaptureModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.ScreenCaptureModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.ScreenCaptureModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.ScreenCaptureModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.SharedInternalsModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.SharedInternalsModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.SharedInternalsModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.SharedInternalsModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.SharedInternalsModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.SpriteMaskModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.SpriteMaskModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.SpriteMaskModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.SpriteMaskModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.SpriteMaskModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.SpriteShapeModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.SpriteShapeModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.SpriteShapeModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.SpriteShapeModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.SpriteShapeModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.StreamingModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.StreamingModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.StreamingModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.StreamingModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.StreamingModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.SubstanceModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.SubstanceModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.SubstanceModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.SubstanceModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.SubstanceModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.TLSModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.TLSModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.TLSModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.TLSModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.TLSModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.TerrainModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.TerrainModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.TerrainModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.TerrainModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.TerrainModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.TerrainPhysicsModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.TerrainPhysicsModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.TerrainPhysicsModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.TerrainPhysicsModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.TextCoreModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.TextCoreModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.TextCoreModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.TextCoreModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.TextCoreModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.TextRenderingModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.TextRenderingModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.TextRenderingModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.TextRenderingModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.TilemapModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.TilemapModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.TilemapModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.TilemapModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.TilemapModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UI">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.UI.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.UI.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.UI.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.UI.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UIElementsModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.UIElementsModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.UIElementsModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.UIElementsModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UIModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.UIModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.UIModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.UIModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.UIModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UNETModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.UNETModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.UNETModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.UNETModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.UNETModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UmbraModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.UmbraModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.UmbraModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.UmbraModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.UmbraModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UnityAnalyticsModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.UnityAnalyticsModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.UnityAnalyticsModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.UnityAnalyticsModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UnityConnectModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.UnityConnectModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.UnityConnectModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.UnityConnectModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.UnityConnectModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UnityTestProtocolModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.UnityTestProtocolModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.UnityTestProtocolModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.UnityTestProtocolModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.UnityTestProtocolModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.UnityWebRequestAudioModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.UnityWebRequestModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.UnityWebRequestModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.UnityWebRequestModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.UnityWebRequestTextureModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.UnityWebRequestWWWModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.VFXModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.VFXModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.VFXModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.VFXModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.VFXModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.VRModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.VRModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.VRModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.VRModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.VRModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.VehiclesModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.VehiclesModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.VehiclesModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.VehiclesModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.VehiclesModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.VideoModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.VideoModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.VideoModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.VideoModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.VideoModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.WindModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.WindModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.WindModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.WindModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.WindModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.XRModule">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.XRModule.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.XRModule.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.XRModule.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.XRModule.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine">
+            <HintPath Condition="Exists('../_RimWorldData/Managed/')">../_RimWorldData/Managed/UnityEngine.dll</HintPath> <!-- Custom directory -->
+            <HintPath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath> <!-- Windows Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/')">$(HOME)/.steam/steam/SteamApps/common/RimWorld/RimWorldLinux_Data/Managed/UnityEngine.dll</HintPath> <!-- Linux Steam install path -->
+            <HintPath Condition="Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/')">$(HOME)/Library/Application Support/Steam/steamapps/common/RimWorld/RimWorldMac.app/Contents/Resources/Data/Managed/UnityEngine.dll</HintPath> <!-- macOS Steam install path -->
+            <Private>False</Private>
+        </Reference>
+        <!-- end RimWorld references -->
+        <Reference Include="0Harmony" HintPath="ThirdParty\0Harmony.dll" Private="False" />
+
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System.Data.DataSetExtensions" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Source\**\*.cs" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
