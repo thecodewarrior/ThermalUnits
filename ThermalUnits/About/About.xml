@@ -11,6 +11,7 @@
 * Fahrenheit: "Outdoors 50F [10C]"
 * Kelvin: "Outdoors 283K [10C/50F]"
     </description>
+    <url>https://steamcommunity.com/sharedfiles/filedetails/?id=2006814687</url>
     <modDependencies>
         <li>
             <packageId>brrainz.harmony</packageId>
